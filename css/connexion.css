@@ -1,0 +1,96 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(119.36deg, #E19FFF 0%, #F0CFFF 67.19%, #FFFFFF 100%);;
+}
+
+h1{
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+p{
+    margin: 0;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 21px;
+}
+
+/*Div au centre*/
+.section_connexion{
+    display: flex;
+    width: 790px;
+    height: 460px;
+    left: 25%;
+    top: 18%;
+    background: #EEEEEE;
+    position: absolute;
+    border-radius: 25px;
+}
+
+.part_left{
+    width:50%;
+    background-color: white;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.img_co{
+    width: 70%;
+    height: auto;
+    padding-left:15%;
+    padding-top:20%;
+}
+
+.part_right{
+    padding-left:30px;
+    padding-top: 20px;
+    width:50%;
+    background-color: #EEEEEE;
+    border-radius: 25px;
+}
+
+/*Formulaire*/
+.input_form{
+    width: 244px;
+    height: 37px;
+    left: 529px;
+    top: 264px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border : none;
+    margin : 10px 0px;
+    color: #5c5c5c;
+    font-size: 15px;
+    padding: 2px 10px;
+}
+
+.input_form:focus{
+    outline: none;
+}
+
+.btn_valid{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    width: 137px;
+    height: 34px;
+    left: 582px;
+    top: 450px;
+    background: #5B417A;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin: 20px 0px;
+}
+
+.a_form{
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.a_form:hover{
+    text-decoration: underline;
+    color: #5B417A;
+}
