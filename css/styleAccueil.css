@@ -1,0 +1,65 @@
+body {
+  background-color: white;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  display: grid;
+  grid-template-columns: auto 2fr;
+  align-items: center;
+  justify-items: center;
+}
+/* Page accueil connecté */
+.welcome {
+  text-align: center;
+  font-size: 40px;
+}
+
+.accueilConnecte {
+  margin-top: 20px;
+  width: 500px;
+}
+/* Non connecté */
+.navbar {
+  background: linear-gradient(90.13deg, #d599f1 27.08%, #b77aff 100%);
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+.navbar img {
+  width: 80px;
+}
+.navbar button {
+  margin-right: 10px;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+}
+
+.suscribe {
+  background-color: #d599f1;
+  border-radius: 20px;
+  padding: 10px 30px;
+  color: white;
+  border: none;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flex img {
+  width: 646px;
+  height: 384px;
+  margin-top: 15px;
+}
+.flex p {
+  width: 739px;
+  height: 51px;
+  text-align: center;
+  margin-bottom: 30px;
+}
