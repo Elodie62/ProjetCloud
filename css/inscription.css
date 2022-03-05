@@ -1,0 +1,74 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    margin:0;
+    background: linear-gradient(125.28deg, #B77AFF 0%, #5B417A 87.99%);
+}
+
+h1{
+    margin:0;
+}
+
+p{
+    margin: 0;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 21px;
+}
+
+.div_inscription{
+    width: 582px;
+    height: 453px;
+}
+
+.part_up{
+    background-color: #ffffff;
+    border-radius: 25px 25px 0px 0px;
+}
+
+.part_down{
+    background-color: #F4F4F4;
+    border-radius: 0px 0px 25px 25px;
+}
+
+.input_form{
+    width: 363px;
+    height: 37px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border : none;
+    margin : 10px 0px;
+    color: #5c5c5c;
+    font-size: 15px;
+    padding: 2px 10px;
+}
+
+.input_form:focus{
+    outline: none;
+}
+
+.btn_valid{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30%;
+    height: 34px;
+    left: 582px;
+    top: 450px;
+    background: #5B417A;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin: 20px 35%;
+
+}
+
+
+.img_co{
+    width: 40%;
+    padding-left:30%;
+}
+
+
+
+
+
