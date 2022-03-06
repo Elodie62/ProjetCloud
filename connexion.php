@@ -27,12 +27,11 @@ include("user.php");
               <p>Adresse mail</p>
             <input class="input_form" type="email" name="mail" /><br>
               <p>Mot de passe</p>
-            <input class="input_form"type="password" name="mdp" /><br>
+            <input class="input_form" type="password" name="mdp" /><br>
             <input class="btn_valid" type="submit" value="Connexion" /><br>
 
               <a class="a_form" href="">Mot de passe oublié</a><br>
               <a class="a_form" href="inscription.php">Pas de compte ? Inscrivez-vous !</a>
-
           </form>
     </div>
 </div>
@@ -44,5 +43,7 @@ include("user.php");
 <?php
 if (isset($_POST['mail']) && isset($_POST['mdp'])) {
   $user = new User($_POST['mail'], $_POST['mdp']);
+  header('Location:accueil.php');
 }
+
 ?>

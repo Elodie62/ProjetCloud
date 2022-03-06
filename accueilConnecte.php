@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +20,7 @@ session_start();
         <?php
         include 'navbar.php'
         ?>
-        <section>
+        <section style="height: 100vh;">
 
             <h1 class="welcome">Bienvenue dans votre espace </h1>
             <img class="accueilConnecte" src="./img/accueilConnecte.png" alt="">

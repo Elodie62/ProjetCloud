@@ -2,7 +2,7 @@
     <img class="logo" src="./img/motionPictures.png" alt="logo" />
     <div class="user">
         <i class="fa-solid fa-user"></i>
-        <a href="#">Mon compte</a>
+        <a href="compte.php">Mon compte</a>
     </div>
     <div class="media">
         <i class="fa-solid fa-photo-film"></i>
@@ -16,7 +16,7 @@
     if (isset($_SESSION['mail']) && !empty($_SESSION['mail'])) { ?>
         <div class="logout">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <a href="#">Se déconnecter</a>
+            <a href="deconnexion.php">Se déconnecter</a>
         </div>
     <?php
     }

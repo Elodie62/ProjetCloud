@@ -46,7 +46,6 @@ include("user.php");
                 <label for="password">
                     <p>Mot de passe :</p>
                     <input class="input_form" name="mdp" id="password" type="password" required" /><br>
-                    <!-- patter="[A-Z][0-9]{8}"-->
                 </label>
 
                 <input class="btn_valid" type="submit" value="Valider" /><br>
