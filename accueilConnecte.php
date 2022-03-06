@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="./css/styleAccueil.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
     <script src="https://kit.fontawesome.com/68789f64a4.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E
-    <link rel=" preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
 </head>
 
