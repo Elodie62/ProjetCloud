@@ -48,23 +48,28 @@ if (isset($_POST['submit'])) {
             ));
 
             $fileId = $database->lastInsertId();
-            $tagInsertStatement = $database->prepare('INSERT INTO `photo-tag` VALUES (:idPhoto, :idTag)');
+            $tagInsertStatement = $database->prepare('INSERT INTO `photo-tag`(idPhoto, idTags) VALUES (:idPhoto, :idTag)');
 
             foreach ($tags as $tag) {
+                // echo ($tag);
+                // $a = $database->prepare('SELECT tag FROM tags WHERE id = 1');
+                // echo ($a);
+                // $tagInsertStatement = $database->prepare('INSERT INTO `photo-tag` VALUES (:idPhoto, :idTags)');
                 $tagInsertStatement->execute(array(
                     'idPhoto' => $fileId,
                     'idTag' => $tag,
                 ));
+                echo ("out");
             }
 
-            $currentSizeUpdateStatement = $database->prepare('UPDATE `user` SET espace_utilise = espace_utilise + :fileSize WHERE id = :userId');
+            $currentSizeUpdateStatement = $database->prepare('UPDATE `user` SET espace_restant = espace_restant + :fileSize WHERE id = :userId');
 
             $currentSizeUpdateStatement->execute(array(
                 'fileSize' => $_SESSION['id'],
                 'userId' => $addFile['size'],
             ));
 
-            header('Location: addMedia.php');
+            //header('Location: addMedia.php');
         } catch (Exception $err) {
             error_log($err->getMessage());
         }
