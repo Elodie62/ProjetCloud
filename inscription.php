@@ -14,7 +14,7 @@ include("user.php");
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
 </head>
 
-<body>
+ <body>
     <div class="div_inscription">
         <div class="part_up">
             <img class="img_co" src="img/motionPictures.png">
@@ -53,7 +53,7 @@ include("user.php");
             </form>
         </div>
     </div>
-</body>
+ </body>
 
 
 </html>

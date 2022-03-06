@@ -2,10 +2,14 @@ body{
     font-family: 'Poppins', sans-serif;
     margin:0;
     background: linear-gradient(125.28deg, #B77AFF 0%, #5B417A 87.99%);
+    height: 120vh;
+    display: block;
 }
 
 h1{
-    margin:0;
+    margin: 0;
+    padding: 20px;
+    color: #5B417A;
 }
 
 p{
@@ -18,6 +22,10 @@ p{
 .div_inscription{
     width: 582px;
     height: 453px;
+    margin: auto;
+    margin-top:40px;
+    left: 25%;
+    top: 18%;
 }
 
 .part_up{
@@ -28,6 +36,8 @@ p{
 .part_down{
     background-color: #F4F4F4;
     border-radius: 0px 0px 25px 25px;
+    text-align: center;
+    padding-bottom: 30px;
 }
 
 .input_form{
@@ -68,6 +78,17 @@ p{
     padding-left:30%;
 }
 
+.a_form{
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.a_form:hover{
+    text-decoration: underline;
+    color: #5B417A;
+}
 
 
 

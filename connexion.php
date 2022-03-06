@@ -43,7 +43,6 @@ include("user.php");
 <?php
 if (isset($_POST['mail']) && isset($_POST['mdp'])) {
   $user = new User($_POST['mail'], $_POST['mdp']);
-  header('Location:accueil.php');
 }
 
 ?>
