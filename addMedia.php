@@ -1,16 +1,11 @@
 <?php
 session_start();
-include 'include/database.php';
+include 'bdd.php';
 $database = getPDO();
 
 $allowedExtensions = array('.jpg', '.jpeg', '.gif', '.png', '.mp4', '.avi', '.mov');
 
-// $userReq = $database->prepare("SELECT * FROM users WHERE mail = :mail");
-// $userReq->execute([
-//   ':mail' => $_SESSION['mail']
-// ]);
-//$user = $userReq->fetch(PDO::FETCH_ASSOC);
-
+$tag = $database->query("SELECT * FROM tags");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,20 +32,35 @@ $allowedExtensions = array('.jpg', '.jpeg', '.gif', '.png', '.mp4', '.avi', '.mo
     <section>
       <h1>Ajoutez des médias</h1>
       <form action="./file.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="add" id="add" accept="<?= implode(',', $allowedExtensions) ?>" />
-        <input class="btn" type="submit" name="submit" value="Valider" />
-      </form>
 
-      <article>
-        <label for="addMedia">
+        <label class="labelAdd" for="addMedia">
           <p>Glissez/déposez votre média</p>
           <img src="./img/dragAndDrop.jpg" alt="" />
-          <!-- <i class="fa-solid fa-folder-plus"></i> -->
-          <input type="file" name="addMedia" id="addMedia" />
+
+          <input type="file" name="addMedia" id="addMedia" accept="<?= implode(',', $allowedExtensions) ?>" />
         </label>
-      </article>
+        <div class="hidden formPart2">
+          <label for="photoName">Nom</label>
+          <input type="text" name="photoName" id="photoName">
+          <input type="date" name="photoDate" id="photoDate">
+          <h2>Tag</h2>
+          <select multiple name="tags[]">
+            <?php
+            $results = $tag->fetchAll();
+            foreach ($results as $result) {
+            ?>
+              <option value="<?= $result->tag ?>"><?= $result->tag ?></option>
+            <?php
+            }
+            ?>
+          </select>
+          <input class="btn" type="submit" name="submit" id="submit" value="Valider" />
+        </div>
+      </form>
+
     </section>
   </div>
+  <script src="./script.js"></script>
 </body>
 
 </html>
