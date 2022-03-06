@@ -1,5 +1,5 @@
 <nav>
-    <img class="logo" src="./img/motionPictures.png" alt="logo" />
+    <a href="accueilConnecte.php"><img class="logo" src="./img/motionPictures.png" alt="logo" /></a>
     <div class="user">
         <i class="fa-solid fa-user"></i>
         <a href="compte.php">Mon compte</a>
