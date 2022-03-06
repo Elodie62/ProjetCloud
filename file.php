@@ -1,25 +1,31 @@
 <?php
 session_start();
-include 'include/database.php';
+include 'bdd.php';
 
 $database = getPDO();
 
 $allowedExtensions = array('.jpg', '.jpeg', '.gif', '.png', '.mp4', '.avi', '.mov');
 $maxSize = 5242880;
-$addFile = $_FILES['add'];
+$addFile = $_FILES['addMedia'];
+$photoDate = strtotime($_POST['photoDate']);
+$photoName = $_POST['photoName'];
+$tags = $_POST['tags'];
 
+error_log(implode($tags));
 
 if (isset($_POST['submit'])) {
 
     if (isset($addFile)) {
         try {
             if ($addFile['size'] > $maxSize) {
+                error_log("Votre fichier ne doit pas dépasser 5MB");
                 throw new Exception("Votre fichier ne doit pas dépasser 5MB");
             }
 
             $uploadExtension = strtolower(strchr($addFile['name'], "."));
             $isValidExtension = in_array($uploadExtension, $allowedExtensions);
             if (!$isValidExtension) {
+                error_log("Votre photo de profil doit être en jpg, jpeg, gif ou png");
                 throw new Exception("Votre photo de profil doit être en jpg, jpeg, gif ou png");
             }
 
@@ -28,29 +34,21 @@ if (isset($_POST['submit'])) {
             $result = move_uploaded_file($addFile['tmp_name'], $chemin);
 
             if (!$result) {
+                error_log("Erreur lors de l'importation de votre photo");
                 throw new Exception("Erreur lors de l'importation de votre photo");
             }
 
-            $insertFile = $database->prepare('INSERT INTO addMedia (fichier)
-VALUES (:addFile)');
-            $insertFile->execute(array('addFile' => $chemin));
+            $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $insertFile = $database->prepare('INSERT INTO photo(nom, lien, date)
+VALUES (:name, :addFile, :date)');
+
+            error_log($photoName);
+            error_log(gettype($photoDate));
+
+            $insertFile->execute(array('addFile' => $chemin, 'name' => $photoName, 'date' => date("Y-m-d H:i:s", $photoDate)));
             //header('Location: addMedia.php');
-
-
-
-
         } catch (Exception $err) {
-            echo ($err);
+            error_log($err->getMessage());
         }
     }
-
-    // $req = $database->prepare('UPDATE users SET mail = :newmail, adresse = :newaddress, codePostal= :newpostcode, ville= :newcity, tel= :newphonenumber  WHERE id = :id');
-    // $req->execute(array(
-    //   'newmail' => htmlspecialchars($_POST['newmail']),
-    //   'newaddress' => htmlspecialchars($_POST['newaddress']),
-    //   'newpostcode' => htmlspecialchars($_POST['newpostcode']),
-    //   'newcity' => htmlspecialchars($_POST['newcity']),
-    //   'newphonenumber' => htmlspecialchars($_POST['newphonenumber']),
-    //   'id' => $_SESSION['id']
-    // ));
 }
