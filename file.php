@@ -39,14 +39,32 @@ if (isset($_POST['submit'])) {
             }
 
             $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $insertFile = $database->prepare('INSERT INTO photo(nom, lien, date)
-VALUES (:name, :addFile, :date)');
+            $insertFile = $database->prepare('INSERT INTO photo(nom, lien, date) VALUES (:name, :addFile, :date)');
 
-            error_log($photoName);
-            error_log(gettype($photoDate));
+            $insertFile->execute(array(
+                'addFile' => $chemin,
+                'name' => $photoName,
+                'date' => date("Y-m-d H:i:s", $photoDate)
+            ));
 
-            $insertFile->execute(array('addFile' => $chemin, 'name' => $photoName, 'date' => date("Y-m-d H:i:s", $photoDate)));
-            //header('Location: addMedia.php');
+            $fileId = $database->lastInsertId();
+            $tagInsertStatement = $database->prepare('INSERT INTO `photo-tag` VALUES (:idPhoto, :idTag)');
+
+            foreach ($tags as $tag) {
+                $tagInsertStatement->execute(array(
+                    'idPhoto' => $fileId,
+                    'idTag' => $tag,
+                ));
+            }
+
+            $currentSizeUpdateStatement = $database->prepare('UPDATE `user` SET espace_utilise = espace_utilise + :fileSize WHERE id = :userId');
+
+            $currentSizeUpdateStatement->execute(array(
+                'fileSize' => $_SESSION['id'],
+                'userId' => $addFile['size'],
+            ));
+
+            header('Location: addMedia.php');
         } catch (Exception $err) {
             error_log($err->getMessage());
         }
