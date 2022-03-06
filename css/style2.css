@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  display: grid;
+  grid-template-columns: auto 2fr;
+  align-items: center;
+}
+
+#addMedia {
+  display: none;
+}
+
+label {
+  width: 577px;
+  height: 310px;
+  cursor: pointer;
+}
+label img {
+  width: 150px;
+}
+article {
+  padding: 30px;
+  background-color: rgba(240, 207, 255, 0.21);
+  border: 1px dashed #d599f1;
+
+  /* box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.25); */
+  width: 580px;
+  height: 310px;
+}
+
+
+
+
+
+
+
