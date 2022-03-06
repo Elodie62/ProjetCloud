@@ -22,6 +22,7 @@ $user = $userReq->fetch(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/68789f64a4.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container">
