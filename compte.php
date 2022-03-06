@@ -33,9 +33,9 @@ $user = $userReq->fetch(PDO::FETCH_ASSOC);
 
         <div class="div_compte">
             <h2>Votre espace restant :</h2>
-            <p>Votre espace utilisé : ...gO</p>
-            <p>Votre espace autorisé : ...gO</p>
-            <p>Il vous reste : ...gO</p>
+            <p>Votre espace utilisé : <?php echo $user['espace_total']; ?> k0</p>
+            <p>Votre espace autorisé : <?php echo $user['espace_utilise']; ?> k0</p>
+            <p>Il vous reste : <?php echo $user['espace_total'] - $user['espace_utilise']; ?> k0</p>
         </div>
 
         <div class="div_compte">

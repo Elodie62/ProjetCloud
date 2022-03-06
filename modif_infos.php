@@ -17,6 +17,7 @@ $user = $userReq->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/compte.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/modif.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +28,7 @@ $user = $userReq->fetch(PDO::FETCH_ASSOC);
     <?php
     include 'navbar.php'
     ?>
-    <section style="height:100vh">
+    <section>
 
         <h1>Modifiez vos informations :</h1>
 
@@ -42,11 +43,11 @@ $user = $userReq->fetch(PDO::FETCH_ASSOC);
                 <input type="date" name="newbirthdate" value="<?php echo  $user['birth_date']; ?>">
                 <p>Votre e-mail : </p>
                 <input type="text" name="newmail" value="<?php echo  $user['mail']; ?>"><br>
-                <input class="" type="submit" name="submit" value="Modifier" />
+                <input class="btn_valid" type="submit" name="submit" value="Modifier" />
             </form>
         </div>
 
-        <a style="color:black;" href="compte.php">Retourner à mon compte</a>
+        <a style="margin-bottom:30px;" class="btn_return" href="compte.php">Retourner à mon compte</a>
     </section>
 </div>
 

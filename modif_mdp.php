@@ -17,6 +17,7 @@ $user = $userReq->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/compte.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/modif.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,20 +33,20 @@ $user = $userReq->fetch(PDO::FETCH_ASSOC);
         <div class="div_compte">
             <form method="POST">
                 <h2>Votre mot de passe</h2>
-                <span>Ancien mot de passe:</span>
-                <input type="password" name="old_password" required>
+                <span>Ancien mot de passe:</span><br>
+                <input type="password" name="old_password" required><br>
 
-                <span>Nouveau mot de passe:</span>
-                <input type="password" name="password" required>
+                <span>Nouveau mot de passe:</span><br>
+                <input type="password" name="password" required><br>
 
-                <span>Confirmer le nouveau mot de passe:</span>
-                <input type="password" name="confirm_password" required>
+                <span>Confirmer le nouveau mot de passe:</span><br>
+                <input type="password" name="confirm_password" required><br>
 
-                <input type="submit" name="submitPass" value="Valider" />
+                <input class="btn_valid" type="submit" name="submitPass" value="Valider" />
             </form>
         </div>
 
-        <a style="color:black;" href="compte.php">Retourner à mon compte</a>
+        <a class="btn_return" href="compte.php">Retourner à mon compte</a>
     </section>
 </div>
 
@@ -60,19 +61,20 @@ if (isset($_POST['submitPass'])) {
         ':mail' => $_SESSION['mail']
     ]);
     $currentPassword = $req->fetchColumn();
-    if ($currentPassword === sha1($_POST['old_password'])) {
+    if ($currentPassword === $_POST['old_password']) {
         if ($_POST['password'] === $_POST['confirm_password']) {
             $request = $Bdd->prepare("UPDATE user SET mdp = :newPassword WHERE mail = :mail");
             $request->execute([
-                ':newPassword' => sha1($_POST['password']),
+                ':newPassword' => $_POST['password'],
                 ':mail' => $_SESSION['mail']
             ]);
         } else {
-            $errorMessagePass = 'Les mots de passe ne sont pas identiques!';
+            echo 'Les mots de passe ne sont pas identiques!';
         }
     } else {
-        $errorMessagePass = 'Le mot de passe est incorrect...';
+        echo 'Le mot de passe est incorrect...';
     }
+    echo 'cest bon';
     //header('Location:compte.php');
 }
 

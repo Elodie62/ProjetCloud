@@ -7,12 +7,14 @@ class User
     private $mdp;
     private $mail;
     private $birth_date;
+    private $espace_total;
+    private $espace_utilise;
     public $actif;
     public $lastco;
     private $Bdd;  // Objet PDO
 
     //CONSTRUCTEUR DESTRUCTEUR
-    function __construct($mail, $mdp, $nom = NULL, $prenom = NULL, $birth_date = NULL)
+    function __construct($mail, $mdp, $nom = NULL, $prenom = NULL, $birth_date = NULL, $espace_total = 5000000, $espace_utilise = 0)
     {
         $this->initBDD();
         if ($this->setLogin($mail)) {
@@ -25,6 +27,8 @@ class User
                 $this->prenom = $prenom;
                 $this->mail = $mail;
                 $this->birth_date = $birth_date;
+                $this->espace_total = $espace_total;
+                $this->espace_utilise = $espace_utilise;
                 $this->subscribe();
             } else {
                 echo "Respecte mon code BOULET ! ";
@@ -59,11 +63,21 @@ class User
         return $this->birth_date;
     }
 
+    public function getEspaceTotal()
+    {
+        return $this->espace_total;
+    }
+
+    public function getEspaceUtilise()
+    {
+        return $this->espace_utilise;
+    }
+
 
     //SETTERS
     public function setMdp($pass)
     {
-        $this->mdp = sha1($pass);
+        $this->mdp = $pass;
     }
 
     public function setMail($mail)
@@ -76,6 +90,15 @@ class User
         $this->birth_date = $birth_date;
     }
 
+    public function setEspaceTotal($espace_total)
+    {
+        $this->espace_total = $espace_total;
+    }
+
+    public function setEspaceUtilise($espace_utilise)
+    {
+        $this->espace_utilise = $espace_utilise;
+    }
 
     public function setLogin($l)
     {
@@ -103,8 +126,8 @@ class User
         if ($mailexist == 0) {
 
             $this->lastco = date("Y-m-d H:i:s");
-            $req = "INSERT INTO user(nom, prenom, birth_date, mail, mdp)
-                    VALUES('$this->nom','$this->prenom','$this->birth_date','$this->mail','$this->mdp')";
+            $req = "INSERT INTO user(nom, prenom, birth_date, mail, mdp, espace_total, espace_utilise)
+                    VALUES('$this->nom','$this->prenom','$this->birth_date','$this->mail','$this->mdp','$this->espace_total','$this->espace_utilise')";
 
             // ON EXECUTE LA REQUETE
             $Ores = $this->Bdd->query($req);
@@ -135,7 +158,7 @@ class User
             $this->lastco = $Usr->lastco;
             $this->ouvrirSession();
 
-            header('Location: compte.php');
+            header('Location: accueilConnecte.php');
         } else {
             $_SESSION['error'] = "pas d'users ou faux mot de passe";
             header('Location: connexion.php');
