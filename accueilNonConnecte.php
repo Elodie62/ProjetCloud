@@ -26,7 +26,7 @@ session_start();
     <div class="flex">
 
         <h1>Découvrez MotionPictures !</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt expedita in voluptatem reprehenderit tempore ex vel eligendi culpa dolorem voluptatum odit harum iusto labore hic.</p>
+        <p>Motion pictures vous permet un stockage de vos médias en toute simplicité ! Découvrez nos offres en vous inscrivant.</p>
         <button class="suscribe">Je m'inscris </button>
         <img src="./img/accueilNonConnecte.png" alt="">
     </div>
