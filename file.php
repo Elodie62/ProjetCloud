@@ -11,6 +11,12 @@ $photoDate = strtotime($_POST['photoDate']);
 $photoName = $_POST['photoName'];
 $tags = $_POST['tags'];
 
+$userReq = $database->prepare("SELECT * FROM user WHERE mail = :mail");
+$userReq->execute([
+    ':mail' => $_SESSION['mail']
+]);
+$user = $userReq->fetch(PDO::FETCH_ASSOC);
+
 error_log(implode($tags));
 
 if (isset($_POST['submit'])) {
@@ -48,14 +54,18 @@ if (isset($_POST['submit'])) {
             ));
 
             $fileId = $database->lastInsertId();
-            $tagInsertStatement = $database->prepare('INSERT INTO `photo-tag` VALUES (:idPhoto, :idTag)');
+            $tagInsertStatement = $database->prepare('INSERT INTO `photo-tag`(idPhoto, idTags) VALUES (:idPhoto, :idTag)');
 
             foreach ($tags as $tag) {
+
                 $tagInsertStatement->execute(array(
                     'idPhoto' => $fileId,
                     'idTag' => $tag,
                 ));
+                echo ("out");
             }
+            $idUserPhotoInsert = $database->prepare('INSERT INTO `user-photo` (idPhoto, idUser) VALUES(:idPhoto, :idUser)');
+            $idUserPhotoInsert->execute(array('idPhoto' => $fileId, 'idUser' => $user['id'],));
 
             $currentSizeUpdateStatement = $database->prepare('UPDATE `user` SET espace_utilise = espace_utilise + :fileSize WHERE id = :userId');
 
