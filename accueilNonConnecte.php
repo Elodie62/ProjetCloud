@@ -20,14 +20,15 @@ session_start();
 <body>
     <nav class="navbar">
         <img class="logo" src="./img/motionPictures.png" alt="logo" />
-        <button>Connexion</button>
+
+        <a href="./connexion.php" class="connect">Connexion </a>
 
     </nav>
     <div class="flex">
 
         <h1>Découvrez MotionPictures !</h1>
         <p>Motion pictures vous permet un stockage de vos médias en toute simplicité ! Découvrez nos offres en vous inscrivant.</p>
-        <button class="suscribe">Je m'inscris </button>
+        <a href="./inscription.php" class="suscribe">Je m'inscris </a>
         <img src="./img/accueilNonConnecte.png" alt="">
     </div>
 
