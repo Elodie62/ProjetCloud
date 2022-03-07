@@ -31,27 +31,32 @@ $user = $userReq->fetch(PDO::FETCH_ASSOC);
     <?php
     include 'navbar.php'
     ?>
-    <section>
+    <section style="height:100vh">
         <h1>Votre galery</h1>
         <div class="tags">
-            <button>Famille</button>
-            <button>Amis</button>
-            <button>Vacances</button>
-            <button>Loisirs</button>
+            <button class="tag" style="background-color: lightblue">Famille</button>
+            <button class="tag" style="background-color: lightpink">Amis</button>
+            <button class="tag" style="background-color: lightgreen">Vacances</button>
+            <button class="tag" style="background-color: lightsalmon">Loisirs</button>
         </div>
 
         <?php
             $ORes = $PhotoReq->fetchAll();
-            //print_r($ORes[0]->lien);
+            
+            ?>
+            <div class="galery_photo">
+            <?php
             foreach($ORes as $res){
                 if($res->id == $user['id']){
                      ?>
                     <img src="<?php echo $res->lien?>" alt="">';
                     <?php
-
                 }
                
             }
+            ?>
+            </div>
+            <?php
 
 
         ?>
