@@ -39,22 +39,27 @@ $tag = $database->query("SELECT * FROM tags");
 
           <input type="file" name="addMedia" id="addMedia" accept="<?= implode(',', $allowedExtensions) ?>" />
         </label>
-        <div class="hidden formPart2">
-          <label for="photoName">Nom</label>
-          <input type="text" name="photoName" id="photoName">
-          <input type="date" name="photoDate" id="photoDate">
-          <h2>Tag</h2>
-          <select multiple name="tags[]">
-            <?php
-            $results = $tag->fetchAll();
-            foreach ($results as $result) {
-            ?>
-              <option value="<?= $result->tag ?>"><?= $result->tag ?></option>
-            <?php
-            }
-            ?>
-          </select>
-          <input class="btn" type="submit" name="submit" id="submit" value="Valider" />
+        <div class="imgDrag">
+
+
+          <div id="img-preview"></div>
+          <div class="hidden formPart2">
+            <label for="photoName">Nom</label>
+            <input type="text" name="photoName" id="photoName">
+            <input type="date" name="photoDate" id="photoDate">
+            <label for="tag" id="tag">Tag</label>
+            <select multiple name="tags[]">
+              <?php
+              $results = $tag->fetchAll();
+              foreach ($results as $result) {
+              ?>
+                <option value="<?= $result->id ?>"><?= $result->tag ?></option>
+              <?php
+              }
+              ?>
+            </select>
+            <input class="btn" type="submit" name="submit" id="submit" value="Valider" />
+          </div>
         </div>
       </form>
 
